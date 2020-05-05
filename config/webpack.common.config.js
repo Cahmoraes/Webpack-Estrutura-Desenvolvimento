@@ -69,6 +69,15 @@ module.exports = {
             outputPath: 'assets/images'
           }
         }
+      },
+      {
+        test: /\.(html|htm)$/,
+        use: {
+          loader: 'html-es6-template-loader',
+          query: {
+            transpile: true
+          }
+        }
       }
     ]
   }
