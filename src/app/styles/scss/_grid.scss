@@ -43,10 +43,9 @@ $cols: 12;
   margin-left:  $gutter / 2;
   margin-right: $gutter / 2;
   min-height: 1px;
-  display: block;
   align-self: flex-start;
   @include d(s) {
-    flex: 1 1 grid(12);
+    flex: 0 0 grid(12);
     max-width: grid(12);
     align-self: auto;
   }
@@ -57,10 +56,14 @@ $cols: 12;
 }
 
 @mixin container {
+  position: relative;
   max-width: $l-device;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  @include d(m) {
+    max-width: $m-device;
+  }
   @include d(s) {
     max-width: $s-device;
     flex-direction: column;
@@ -73,10 +76,6 @@ $cols: 12;
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  @include d(s) {
-    max-width: $s-device;
-    flex-direction: column;
-  }
 }
 
 .container {
@@ -85,24 +84,6 @@ $cols: 12;
 
 .row {
   @include row;
-}
-
-.self-center {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.self-right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
-.self-left {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 // Example
