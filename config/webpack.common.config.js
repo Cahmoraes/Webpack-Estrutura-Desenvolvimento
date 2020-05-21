@@ -11,7 +11,7 @@ module.exports = {
     filename: '[name].[chunkhash].js'
   },
   resolve: {
-    extensions: ['.js','.ts'] 
+    extensions: ['.js', '.ts']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -46,7 +46,8 @@ module.exports = {
             ],
             plugins: [
               ["@babel/plugin-proposal-decorators", { "legacy": true }],
-              ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+              ["@babel/plugin-proposal-class-properties", { "loose": true }],
+              ["@babel/plugin-transform-runtime"]
             ]
           }
         }

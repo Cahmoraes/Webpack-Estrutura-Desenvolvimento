@@ -15,3 +15,22 @@ const footerText = footer.getFooterText()
 console.log(footerText)
 
 document.querySelector('#webpack-gif').setAttribute('src', webpackgif)
+
+const myJob = (op) => new Promise((resolve, reject) => {
+  if (op === true) {
+    resolve('resolvido')
+  } else {
+    reject('rejeitado')
+  }
+})
+
+const doThejob = async () => {
+  try {
+    const response = (await myJob(true))
+    console.log(response)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+doThejob()
