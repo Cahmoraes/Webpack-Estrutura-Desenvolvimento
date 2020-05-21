@@ -5,7 +5,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: './src/index',
+  entry: {
+    main: './src/index',
+    vendor: './src/vendor.js'
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[chunkhash].js'
@@ -15,12 +18,25 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'My Webpack\'s studies',
       template: './src/index.html',
+      filename: 'index.html',
+      title: 'My Webpacks studies',
+      chunks: ['main'],
       inject: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/templates/template.html',
+      filename: 'template.html',
+      title: 'Template',
+      inject: true,
+      chunks: ['vendor'],
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true
       }
     }),
     new MiniCssExtractPlugin({
